@@ -1,0 +1,73 @@
+//Design
+
+//Fisrt design
+/*
+field :
+Model_name (string)
+Serial_Number (string)
+Power_Supply (bool)
+
+Dust_Value (int)
+Dust_sensor (bool)
+Switch_Sensor_on_off (bool)
+
+Mode (int 1-3 silent auto max)
+Fan_speed (string speed[] = {High Medium Low})\
+
+Current_state (bool on/off)
+
+method :
+//do both model
+-check Switch , open when switch on and have power
+-change fan speed, high speed if dust more than 60 ; medium when 40 low when 20
+(auto)
+-check Serial number, return Serial number
+
+//do in pro
+-check mode; always high when max mode, always low when silent
+
+//do in special diy
+always high
+*/
+
+Final Design
+มีทั้งหมด 3 โมเดล คือ ธรรมดา (standard) โปร (pro) และ ทำเอง (diy)
+
+-ธรรมดา มีแค่โหมด Auto และจะเริ่มเพิ่มความเร็วใบพัดช้ากว่า โปร
+-โปร มี 3 โหมด 1.เงียบ พัดลมช้าตลอด 2.โปร แค่ฝุ่น 40 ก็เพิ่มความเร็วสูงสุดแล้ว 3.เต็มสปีด พัดลมแรงตลอดเวลา
+3.ทำเอง มีแค่หมุนเร็วอย่างเดียว
+
+field:
+    ใช้ร่วมกันทั้ง 3 โมเดล มี
+    -String model_name / บอกว่าโมเดลไหน
+    -String serial_number /บอกหมายเลข
+    -boolean current_state /ดูว่าตอนนี้เปิดหรือปิด
+    -boolean power /เสียบปลั๊กหรีอยัง
+
+    ใช้แค่ใน โปร กับ ธรรมดา
+    -dust_value /ฝุนเยอะแค่ไหน
+
+    ใช้แค่ในโปร
+    -mode / โหมดปัจจุบัน
+    -mode_have / โหมดทั้งหมดที่มี
+
+method:
+    ใช้ทั้ง 3 โมเดล
+    -about_me //ใช้ดูว่ารุ่นไร เลขเครื่องอะไร
+    -check_plug //ดูว่าเสียบปลั๊กไหม
+    -toggle_switch //กดปุ่ม แล้วควรเปิดหรือปิด
+    -power_set //ชักปลั๊กหรือเียบปลั๊ก
+    -open //เปิดเครื่อง
+    -close //ปิดเครื่อง
+    -clear_terminal //can't use in Intelij
+    -status //ดูสถานะของเครื่อง
+    -working //เครื่องนั้นๆทำงานอย่างไร
+
+    ใช้ใน ธรรมดา และโปร
+    -fan_speed //ดูว่าใบพัดหมุุดเร็วแค่ไหน ใช้ใน โหมดออโต้
+    -feel_lot_of_dust //เปลี่ยบเหมือนเป็นเซนเซอร์ของเครื่อง
+
+    ใช้ใน โปร อย่างเดียว
+    -fan_speed(String) //เพื่อบอกว่าตอนนี้พัดลมหมุนเร็วแค่ไหนโดยที่ดูด้วยว่าโหมดไหน
+    -set_mode //ตัวนี้เป็นการเลือกว่าควรจะใช้โหมดไหนในตอนนี้
+
