@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Class for store data od enemy and main character
- */
 public class Text
 {
     //character
@@ -101,9 +98,6 @@ public class Text
             "Now, I am standing on the ground in front of her flying in the sky.\n\n"
         };
 
-    /**
-     * For print the story that store in Text class
-     */
     private void print_story()
     {
         for(String i: story)
@@ -120,9 +114,7 @@ public class Text
         }
     }
 
-    /**
-     * check if user skip the story?
-     */
+    //call order 1
     public void skip_or_not()
     {
         String input = null;
@@ -152,75 +144,50 @@ public class Text
     
     //0 MC
     //1 Enemy
-
-    /**
-     * getter of character info and dialog
-     * @param choose 0 info 1 dialog
-     * @param who 0 mc 1 enemy
-     * @return info or dialog of character
-     */
     public String[] return_info_or_dialog(int choose, int who)
     {
+        // if(choose == 0)
+        // {
+        //     if(who == 0) return mc_info;
+        //     else return enemy_info;
+        // }
+        // else
+        // {
+        //     if(who == 0) return mc_dialog;
+        //     else return enemy_word;
+        // }
+
         return (choose == 0)? ((who == 0)? mc_info: enemy_info): ((who == 0)? mc_dialog: enemy_word);
     }
 
-    /**
-     * getter of chacter lv
-     * @param who 0 lv of mc 1 level 
-     * @return lv of character (depend of character you choose)
-     */
     public int return_lv(int who)
     {
         if(who != 0) return enemy_lv;
         else return mc_lv;
     }
 
-    /**
-     * check if character have wing?
-     * @param who 0 mc 1 enemy
-     * @return have_wing?
-     */
     public boolean return_wing(int who)
     {
         if(who == 0) return mc_wing;
         else return enemy_wing;
     }
 
-    /**
-     * getter stat of character you choose
-     * @param who 0 mc 1 enemy
-     * @return stat that depend on character you choose
-     */
     public float[] return_stat(int who)
     {
         if(who == 0) return mc_stat;
         else return enemy_stat;
     }
 
-    /**
-     * getter equipment the character you have
-     * @param who 0 mc 1 enemy
-     * @return equipment that the character have
-     */
     public Accessory[] return_equipment(int who)
     {
         return (who == 0)? mc_eq: enemy_eq;
     }
 
-    /**
-     * getter weapon list the character have
-     * @param who 0 mc 1 enemy
-     * @return Array of weapon the character have
-     */
     public Weapon[] weapon_have (int who)
     {
         return (who == 0)? mc_have: enemy_have;
     }
 
-    /**
-     * getter list of Item the character have
-     * @return array of Item that the character have
-     */
     public Item[] return_inventory()
     {
         for(int i = 0; i < 4; i++) mana_potion.have_the_same();

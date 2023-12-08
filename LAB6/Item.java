@@ -9,27 +9,48 @@ public class Item
 
 
     //public:
+        /**
+         * this class for Item
+         * @param name name of this item
+         * @param effect what ability that this item can do
+         */
         public Item(String name, float[] effect)
         {
             this.name = name;
             this.effect = effect;
         }
 
+        /**
+         * getter name
+         * @return name of this item
+         */
         public String info()
         {
             return name;
         }
 
+        /**
+         * how many this item do you have
+         * @return count of this item
+         */
         public int return_count()
         {
             return count;
         } 
 
+        /**
+         * call when you have two+ of the same item
+         */
         public void have_the_same()
         {
             count++;
         }
 
+        /**
+         * use item
+         * @param stat1 stat of max stat
+         * @param stat2 stat of current stat
+         */
         public void use_item(float[] stat1, float[] stat2)
         {
             count--;

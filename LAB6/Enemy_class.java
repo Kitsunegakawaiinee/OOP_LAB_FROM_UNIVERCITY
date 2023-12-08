@@ -1,5 +1,8 @@
 import java.util.Random;
 
+/**
+ * this class for create enemy character
+ */
 public class Enemy_class extends Character
 {
     Enemy_class(String[] info, int lv, boolean have_wing,  Accessory[] equipment, Weapon[] weapon_have, float[] stat, String[] word, Item[] inventory)

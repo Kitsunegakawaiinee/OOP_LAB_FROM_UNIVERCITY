@@ -41,6 +41,10 @@ abstract public class Character implements Character_interface
     protected String[] word;
 
     //private:
+
+        /**
+         * this medthod use with use_item
+         */
         private void use_item2(int size, int input)
         {
             if(input < 0 || input > size-1) System.out.println("\nInvalid input\n");
@@ -123,6 +127,9 @@ abstract public class Character implements Character_interface
         @Override
         abstract public void listen(int dialog_index, Character target);
 
+        /**
+         * check if this character lost or not?
+         */
         abstract public boolean is_lost();
 
         @Override
@@ -242,6 +249,10 @@ abstract public class Character implements Character_interface
             }
         }
 
+        /**
+         * getter name of this character
+         * @return name of this character
+         */
         public String return_name()
         {
             return info[0];

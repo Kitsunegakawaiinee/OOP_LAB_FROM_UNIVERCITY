@@ -22,6 +22,9 @@ public class Game
 
     private static boolean game_running = true;
 
+    /**
+     * Call this when you want to start the game
+     */
     public void start()
     {
         //story
@@ -37,7 +40,7 @@ public class Game
     }
 
     /**
-     * Create character and store data in instance var
+     * Create character and store data in instance variable
      * @param who 0.MC 1.Enemy
      */
     private void create_character(int who)
@@ -56,17 +59,24 @@ public class Game
         else monika = new Enemy_class(info, lv, wing, equipment, weapon_have, stat, word, inventory);
     }
 
+    /**
+     * create character (mc anc enemy)
+     */
     private void game_setup()
     {
         create_character(0);
         create_character(1);
     }
 
+    /**
+     * what enemy do when her turn is comming
+     */
     private void monika_turn()
     {
         monika.attack(serena);
     }
 
+    //list of choice
     private String[] choice = 
     {
         "\nWhat should I do?",
@@ -79,7 +89,10 @@ public class Game
         "Unquip your Accessory (7)",
         "Do nothing(else)\n"
     };
-
+    
+    /**
+     * main game
+     */
     private void start_playing()
     {
         boolean in_turn = true;
@@ -136,7 +149,10 @@ public class Game
         System.out.println();
     }
 
-    //method in game
+    /**
+     * (from in ter net but I can't remember source)
+     * using for open sound
+     */
     private void play_sound()
     {
         try {
@@ -152,11 +168,18 @@ public class Game
         }
     }
 
+    /**
+     * for close sound
+     */
     private void close_bgm()
     {
         clip.stop();
     }
 
+    /**
+     * for print the input string with delay wvery character
+     * @param input string you want to print
+     */
     static public void typping_effect(String input)
     {
         try
@@ -174,6 +197,9 @@ public class Game
         }
     }
 
+    /**
+     * set current stat of game running
+     */
     static public void end()
     {
         game_running = false;
