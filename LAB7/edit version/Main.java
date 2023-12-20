@@ -214,6 +214,10 @@ public class Main
         // test.test_contain_all(num);
 
         // test 4
+<<<<<<< HEAD
         // test.three_Function_with_all(num);
+=======
+        test.three_Function_with_all(num);
+>>>>>>> 6a89ba0bb0bcd53e32c3803ec5957fc5f8aa792d
     }
 }
