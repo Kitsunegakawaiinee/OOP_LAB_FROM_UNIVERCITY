@@ -1,6 +1,14 @@
 public interface Character_interface 
 {
+    /**
+     * Method for attack
+     * @param target target that this character want to attack
+     */
     void attack(Character target);
+    /**
+     * skill method for choose and use skill
+     * @return dmg of skill that used
+     */
     float skill();
     float normal_attack();
     void talk(Character target); 
