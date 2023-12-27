@@ -1,0 +1,122 @@
+class Character ของผมจะมีหน้าตาประมาณนี้
+
+STAT (field)
+
+    -Mana/Max_mana (float)
+    -HP/Max_HP (float)
+    -ATK (float)
+    -def (float)
+    //4 บรรทัดด้านบนอาจจะเก็บด้วย Array
+    -now_flying (bool)
+    -LV (int)
+    -job (String)
+    -species (string)
+    -profile (string)
+
+    -inventory (Item)
+
+Equipment
+
+    -Accessories[7] (Accessory) //มี 7 อย่าง คือ เสื้อ กางเกง ผ้าคุม สร้อย แหวน กำไล รองเท้า
+    -weapon (Weapon)
+
+method (ที่จะใช้เป็น public)
+
+    public:
+        # (รับค่า) -> (ส่งออก) นิยามว่าเป็นการรับอะไรเข้ามาแล้วส่งอะไรออกไป
+        -skill () -> (float damage)
+        -normal_attack () -> (float damage) 
+        -talk (string input) -> () //void 
+        -listen (string input) -> () //void
+        -be_attack (float dmg) -> () //void
+        -fly () -> () //void
+        -swap weapon () -> () //void
+        -about_me () -> () //Override toString
+        -equip_Accessory () -> () //void
+        -unequip_Accessory ()->() //void
+        -use_item () -> () //void
+        -check_inventory () -> () //void
+    private:
+        //ค่อยทำตอนแลป 5
+
+
+
+ส่วนclass  Accessory ของผมจะมีหน้าตาประมาณนี้
+
+field
+
+    -name (string)
+    -type (int) //ตัวนี้จะเป้นตัวที่บอกว่าจะใส่ตรงไหนของ Array
+    -stat_info (string) //บอกว่าเพิ่มค่าอะไรบ้าง
+    -stat (float) //ค่าที่จะเอาไปเพิ่ม
+    -stat_index (int) //ในกรณีที่เก็นค่า Stat เป็น Array
+
+method
+
+    public:
+        -return_name ()->(string name)
+        -return_type ()->(string type)
+        -equip () -> () //void
+        -unequip () -> () //void
+    private:
+        -stat_cal (float[] stat) -> () //void
+        //ถ้ามีเพิ่ม เดี๋ยวแลป 5 ค่อยว่ากัน
+
+
+
+Weapon กับ Item ช่างมันก่อน โจทย์ยังไม่ได้ถาม
+
+
+
+ผมไม่ต้องการให้ field ต่างๆนั้นเป็นค่าคงที่ ใน Interface ของผมจึงจะมีแต่ method 
+และเป็นประมาณนี้
+
+public interface Character_interfact 
+{
+    float skill();
+    float normal_attack();
+    void talk(String input);
+    void listen(String input);
+    void be_attack(float dmg);
+    void fly();
+    void swap_weapon();
+    void equip_Accessory();
+    void unequip_Accessory();
+    void use_item();
+    void check_inventory();
+}
+
+public interface Accessory_interface 
+{
+    String return_name();
+    String return_type();
+    void equip();
+    void unequip();  
+}
+
+
+
+แต่ละส่วนทำอะไร
+
+public interface Character_interfact 
+{
+    float skill(); //ใช้สกิลที่ตัวละครนั้นๆมี
+    float normal_attack(); //โจมตีโดยที่ไม่ใช้สกิล
+    void talk(String input); //ในเกมนี้ผมออกแบบให้ตัวละครพูดคุยกันได้
+    void listen(String input); //พูดได้ก็ต้องฟังได้
+    void be_attack(float dmg); //ใช้ตอนโดนโจมตี
+    void fly(); //ถ้าตัวละครนั้นมีปีกจะสามารถบินได้
+    void swap_weapon(); //สลับอาวุธถ้ามีอาวุธมากกว่า 1
+    void equip_Accessory(); //สวมใส่อุปกรณ์
+    void unequip_Accessory(); //ถอดอุปกรณ์
+    void use_item(); //ใช้ item จากใน inventory
+    void check_inventory(); //ดูว่าในกระเป๋ามีอะไรบ้าง
+}
+
+public interface Accessory_interface 
+{
+    String return_name(); //name getter
+    String return_type(); //type getter
+    void equip(); //สวมใส่ของ จะมีการคิดค่าสถานะในกระบวนการนี้
+    void unequip(); //ถอดของและคำนวณสถานะใหม่
+}
